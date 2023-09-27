@@ -45,6 +45,7 @@ typedef uint32 TransactionId;
 
 // FLEXIBLE_ARRAY_MEMBER macro
 // ---------------------------------------------------------------------------------------------------------------------------------
+
 /*
  * We require C99, hence the compiler should understand flexible array
  * members.  However, for documentation purposes we still consider it to be
@@ -61,6 +62,7 @@ Types from src/include/storage/itemid.h
 
 // ItemIdData type
 // ---------------------------------------------------------------------------------------------------------------------------------
+
 /*
  * A line pointer on a buffer page.  See buffer page definitions and comments
  * for an explanation of how line pointers are used.

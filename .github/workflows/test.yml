@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - integration
+      - main
       - '**-ci'
       - '**-cig'
   pull_request:
