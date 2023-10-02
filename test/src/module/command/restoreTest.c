@@ -3123,7 +3123,6 @@ testRun(void)
         hrnCfgArgRawBool(argList, cfgOptOnline, false);
         hrnCfgArgRawZ(argList, cfgOptRepoCipherType, "aes-256-cbc");
         hrnCfgEnvRawZ(cfgOptRepoCipherPass, TEST_CIPHER_PASS);
-
         HRN_CFG_LOAD(cfgCmdBackup, argList);
 
         TEST_RESULT_VOID(hrnCmdBackup(), "backup");

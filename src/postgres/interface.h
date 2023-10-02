@@ -64,15 +64,14 @@ STRING_DECLARE(PG_NAME_XLOG_STR);
 Define default page size
 
 ***********************************************************************************************************************************/
-enum
-{
-    PG_PAGE_SIZE_1  =  1 * 1024,
-    PG_PAGE_SIZE_2  =  2 * 1024,
-    PG_PAGE_SIZE_4  =  4 * 1024,
-    PG_PAGE_SIZE_8  =  8 * 1024,
-    PG_PAGE_SIZE_16 = 16 * 1024,
-    PG_PAGE_SIZE_32 = 32 * 1024
-};
+
+#define PG_PAGE_SIZE_1                                              ((unsigned int) (1 * 1024))
+#define PG_PAGE_SIZE_2                                              ((unsigned int) (2 * 1024))
+#define PG_PAGE_SIZE_4                                              ((unsigned int) (4 * 1024))
+#define PG_PAGE_SIZE_8                                              ((unsigned int) (8 * 1024))
+#define PG_PAGE_SIZE_16                                             ((unsigned int) (16 * 1024))
+#define PG_PAGE_SIZE_32                                             ((unsigned int) (32 * 1024))
+
 
 /***********************************************************************************************************************************
 Define default segment size and pages per segment

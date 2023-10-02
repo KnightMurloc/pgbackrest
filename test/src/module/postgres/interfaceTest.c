@@ -130,7 +130,10 @@ testRun(void)
         // -------------------------------------------------------------------------------------------------------------------------
         HRN_PG_CONTROL_PUT(storageTest, PG_VERSION_95, .pageSize = 64 * 1024);
 
-        TEST_ERROR(pgControlFromFile(storageTest, NULL), FormatError, "page size is 65536. Supported page sizes are 1024, 2048, 4096, 8192, 16384, 32768");
+        TEST_ERROR(
+            pgControlFromFile(
+                storageTest, NULL), FormatError,
+            "page size is 65536. Supported page sizes are 1024, 2048, 4096, 8192, 16384, 32768");
 
         // -------------------------------------------------------------------------------------------------------------------------
         HRN_PG_CONTROL_PUT(
@@ -311,47 +314,65 @@ testRun(void)
             unsigned char pagePG[PG_PAGE_SIZE_8];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xF55E : 0x0E1C, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xF1B9 : 0x0EC3, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(
+                pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xF55E : 0x0E1C, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xF1B9 : 0x0EC3, "check 0xFF filled page, block 999");
         }
         {
             unsigned char pagePG[PG_PAGE_SIZE_1];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x980F : 0x016E, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x982A : 0x0391, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(
+                pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x980F : 0x016E, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x982A : 0x0391, "check 0xFF filled page, block 999");
         }
 
         {
             unsigned char pagePG[PG_PAGE_SIZE_2];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x4937 : 0xB57B, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x48D8 : 0xB7A2, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(
+                pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x4937 : 0xB57B, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x48D8 : 0xB7A2, "check 0xFF filled page, block 999");
         }
 
         {
             unsigned char pagePG[PG_PAGE_SIZE_4];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x81DA : 0x5B9B, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x7EB7 : 0x5BB8, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(pgPageChecksum(
+                                 pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x81DA : 0x5B9B, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x7EB7 : 0x5BB8, "check 0xFF filled page, block 999");
         }
 
         {
             unsigned char pagePG[PG_PAGE_SIZE_16];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xA2AD : 0x158E, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xA548 : 0x18AD, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(
+                pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xA2AD : 0x158E, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0xA548 : 0x18AD, "check 0xFF filled page, block 999");
         }
 
         {
             unsigned char pagePG[PG_PAGE_SIZE_32];
             memset(pagePG, 0xFF, sizeof(pagePG));
 
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x7F66 : 0x5366, "check 0xFF filled page, block 0");
-            TEST_RESULT_UINT(pgPageChecksum(pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x82C5 : 0x5745, "check 0xFF filled page, block 999");
+            TEST_RESULT_UINT(
+                pgPageChecksum(pagePG, 0, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x7F66 : 0x5366, "check 0xFF filled page, block 0");
+            TEST_RESULT_UINT(
+                pgPageChecksum(
+                    pagePG, 999, sizeof(pagePG)), TEST_BIG_ENDIAN() ? 0x82C5 : 0x5745, "check 0xFF filled page, block 999");
         }
 
         {

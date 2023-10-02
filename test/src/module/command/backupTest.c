@@ -1365,8 +1365,8 @@ testRun(void)
         lstAdd(fileList, &file);
 
         TEST_ERROR(
-            backupFile(repoFile, 0, false, 0, compressTypeNone, 1, cipherTypeNone, NULL, NULL, PG_PAGE_SIZE_8, fileList), FileMissingError,
-            "unable to open missing file '" TEST_PATH "/pg/missing' for read");
+            backupFile(repoFile, 0, false, 0, compressTypeNone, 1, cipherTypeNone, NULL, NULL, PG_PAGE_SIZE_8, fileList),
+            FileMissingError, "unable to open missing file '" TEST_PATH "/pg/missing' for read");
 
         // Create a pg file to backup
         HRN_STORAGE_PUT_Z(storagePgWrite(), strZ(pgFile), "atestfile");
@@ -1701,7 +1701,8 @@ testRun(void)
             result,
             *(BackupFileResult *)lstGet(
                 backupFile(
-                    repoFile, 0, false, 0, compressTypeNone, 1, cipherTypeAes256Cbc, STRDEF(TEST_CIPHER_PASS), NULL, PG_PAGE_SIZE_8, fileList),
+                    repoFile, 0, false, 0, compressTypeNone, 1, cipherTypeAes256Cbc, STRDEF(TEST_CIPHER_PASS), NULL, PG_PAGE_SIZE_8,
+                    fileList),
                 0),
             "pg file exists, no repo file, no ignoreMissing, no pageChecksum, no delta, no hasReference");
         TEST_RESULT_UINT(result.copySize, 9, "copy size set");
@@ -2246,7 +2247,8 @@ testRun(void)
         unsigned int currentPercentComplete = 0;
 
         TEST_ERROR(
-            backupJobResult((Manifest *)1, NULL, storageTest, strLstNew(), job, false, 0, NULL, &currentPercentComplete,PG_PAGE_SIZE_8),
+            backupJobResult(
+                (Manifest *)1, NULL, storageTest, strLstNew(), job, false, 0, NULL, &currentPercentComplete,PG_PAGE_SIZE_8),
             AssertError, "error message");
 
         // -------------------------------------------------------------------------------------------------------------------------
@@ -2284,7 +2286,8 @@ testRun(void)
 
         TEST_RESULT_VOID(
             backupJobResult(
-                manifest, STRDEF("host"), storageTest, strLstNew(), job, false, 0, &sizeProgress, &currentPercentComplete,PG_PAGE_SIZE_8),
+                manifest, STRDEF("host"), storageTest, strLstNew(), job, false, 0, &sizeProgress, &currentPercentComplete,
+                PG_PAGE_SIZE_8),
             "log noop result");
         TEST_RESULT_VOID(lockRelease(true), "release backup lock");
 
