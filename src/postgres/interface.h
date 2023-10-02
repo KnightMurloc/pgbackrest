@@ -65,12 +65,12 @@ Define default page size
 
 ***********************************************************************************************************************************/
 
-#define PG_PAGE_SIZE_1                                              ((unsigned int) (1 * 1024))
-#define PG_PAGE_SIZE_2                                              ((unsigned int) (2 * 1024))
-#define PG_PAGE_SIZE_4                                              ((unsigned int) (4 * 1024))
-#define PG_PAGE_SIZE_8                                              ((unsigned int) (8 * 1024))
-#define PG_PAGE_SIZE_16                                             ((unsigned int) (16 * 1024))
-#define PG_PAGE_SIZE_32                                             ((unsigned int) (32 * 1024))
+#define PG_PAGE_SIZE_1                                              ((int) (1 * 1024))
+#define PG_PAGE_SIZE_2                                              ((int) (2 * 1024))
+#define PG_PAGE_SIZE_4                                              ((int) (4 * 1024))
+#define PG_PAGE_SIZE_8                                              ((int) (8 * 1024))
+#define PG_PAGE_SIZE_16                                             ((int) (16 * 1024))
+#define PG_PAGE_SIZE_32                                             ((int) (32 * 1024))
 
 
 /***********************************************************************************************************************************
